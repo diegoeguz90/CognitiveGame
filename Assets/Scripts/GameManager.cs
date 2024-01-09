@@ -17,18 +17,26 @@ public class GameManager : Singleton<GameManager>
 
     public GameStates gameStates = new();
 
-    // Start is called before the first frame update
+    /// <summary>
+    /// Begins the FSM of the game and the sign in the box
+    /// </summary>
     void Start()
     {
         SimpleSignBox.SetMessageInSign("Caja normal", "Mete los items en esta caja");
         gameStates.Initialize(new MainMenu());
     }
 
+    /// <summary>
+    /// This function is called at the gameplay state begin
+    /// </summary>
     public void InitGame()
     {
         SpawnItems();
     }
 
+    /// <summary>
+    /// Create a item in a random position, using the factory
+    /// </summary>
     private void SpawnItems()
     {
         for(int i = 0; i < numberOfItems; i++)
@@ -44,6 +52,10 @@ public class GameManager : Singleton<GameManager>
         }
     }
 
+    /// <summary>
+    /// Generate a random point
+    /// </summary>
+    /// <returns>Vector3 position</returns>
     private Vector3 GetRandomPointInArea()
     {
         float x = UnityEngine.Random.Range(spawnAreaCenter.x - spawnAreaSize.x / 2, spawnAreaCenter.x + spawnAreaSize.x / 2);
@@ -52,6 +64,11 @@ public class GameManager : Singleton<GameManager>
         return new Vector3(x, y, z);
     }
 
+    /// <summary>
+    /// Test if the random point is occupied by the lastes ocupaid items
+    /// </summary>
+    /// <param name="point">Vector3 random point</param>
+    /// <returns>True if was ocuppied, false if is not</returns>
     private bool IsPointOccupied(Vector3 point)
     {
         foreach(Transform spawnedItem in spawnedItems)
@@ -64,5 +81,4 @@ public class GameManager : Singleton<GameManager>
         }
         return false;
     }
-
 }

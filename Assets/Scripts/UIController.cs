@@ -6,10 +6,15 @@ using UnityEngine.UI;
 
 public class UIController : Singleton<UIController>
 {
+    /// <summary>
+    /// UI GameObjects for visualy enabled and disabled
+    /// </summary>
     [SerializeField] public GameObject mainMenu;
     [SerializeField] public GameObject resultsMenu;
 
-    // Start is called before the first frame update
+    /// <summary>
+    /// 
+    /// </summary>
     void Start()
     {
         Button startBtn = mainMenu.GetComponentInChildren<Button>();
@@ -19,11 +24,17 @@ public class UIController : Singleton<UIController>
         finishBtn.onClick.AddListener(OnFinishBtnClicked);
     }
 
+    /// <summary>
+    /// Event that change the MainMenuState
+    /// </summary>
     private void OnStartBtnClicked()
     {
         GameManager.Instance.gameStates.Update();
     }
 
+    /// <summary>
+    /// Event that change the MainMenuState
+    /// </summary>
     private void OnFinishBtnClicked()
     {
         GameManager.Instance.gameStates.Update();
