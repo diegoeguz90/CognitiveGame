@@ -25,6 +25,9 @@ public class SimpleSignBox : Sign
     {
         SimpleStorageBox.OnStorageChanged += UpdateSignMessage;
     }
-
+    private void OnDisable()
+    {
+        SimpleStorageBox.OnStorageChanged -= UpdateSignMessage;
+    }
     #endregion
 }

@@ -4,23 +4,28 @@ using System.Collections.Generic;
 using UnityEngine;
 using static UnityEngine.XR.Interaction.Toolkit.Inputs.Simulation.XRDeviceSimulator;
 
-public class GameManager : MonoBehaviour
+public class GameManager : Singleton<GameManager>
 {
     [SerializeField] Sign SimpleSignBox;
 
     [SerializeField] SimpleItemFactory simpleItemFactory;
-    [SerializeField] int numberOfItems = 4;
+    [SerializeField] public int numberOfItems = 4;
     [SerializeField] Vector3 spawnAreaCenter = new(0.7f, 1.08f, 0.6f);
     [SerializeField] Vector3 spawnAreaSize = new(1.25f, 0f, 1f);
     [SerializeField] float minimunDistance = 1.5f;
+    private List<Transform> spawnedItems = new();
 
-    private List<Transform> spawnedItems = new List<Transform>();
+    public GameStates gameStates = new();
 
     // Start is called before the first frame update
     void Start()
     {
         SimpleSignBox.SetMessageInSign("Caja normal", "Mete los items en esta caja");
+        gameStates.Initialize(new MainMenu());
+    }
 
+    public void InitGame()
+    {
         SpawnItems();
     }
 
@@ -59,4 +64,5 @@ public class GameManager : MonoBehaviour
         }
         return false;
     }
+
 }
