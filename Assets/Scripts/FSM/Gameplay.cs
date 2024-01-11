@@ -8,7 +8,6 @@ public class Gameplay : IState
     public void Enter()
     {
         GameManager.Instance.InitGame();
-        SimpleStorageBox.OnStorageChanged += Update;
     }
 
     public void Update(int score)

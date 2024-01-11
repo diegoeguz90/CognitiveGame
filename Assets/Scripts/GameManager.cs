@@ -6,13 +6,11 @@ using static UnityEngine.XR.Interaction.Toolkit.Inputs.Simulation.XRDeviceSimula
 
 public class GameManager : Singleton<GameManager>
 {
-    [SerializeField] Sign SimpleSignBox;
-
-    [SerializeField] SimpleItemFactory simpleItemFactory;
-    [SerializeField] public int numberOfItems = 4;
-    [SerializeField] Vector3 spawnAreaCenter = new(0.7f, 1.08f, 0.6f);
-    [SerializeField] Vector3 spawnAreaSize = new(1.25f, 0f, 1f);
-    [SerializeField] float minimunDistance = 1.5f;
+    [SerializeField] ItemTypeFactory ItemFactory;
+    [SerializeField] public int numberOfItems;
+    [SerializeField] Vector3 spawnAreaCenter = new();
+    [SerializeField] Vector3 spawnAreaSize = new();
+    [SerializeField] float minimunDistance = 0.3f;
     private List<Transform> spawnedItems = new();
 
     public GameStates gameStates = new();
@@ -22,8 +20,7 @@ public class GameManager : Singleton<GameManager>
     /// </summary>
     void Start()
     {
-        SimpleSignBox.SetMessageInSign("Caja normal", "Mete los items en esta caja");
-        gameStates.Initialize(new MainMenu());
+        gameStates.Initialize(new Gameplay());
     }
 
     /// <summary>
@@ -48,7 +45,7 @@ public class GameManager : Singleton<GameManager>
                 randomPoint = GetRandomPointInArea();
             }
 
-            IItem item1 = simpleItemFactory.InstantiateItem(randomPoint);
+            IItem item = ItemFactory.InstantiateItem(randomPoint);
         }
     }
 

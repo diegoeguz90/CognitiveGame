@@ -5,5 +5,5 @@ using UnityEngine;
 
 public abstract class Sign : MonoBehaviour
 {
-    public abstract void SetMessageInSign(string title, string content);
+    public abstract void SetMessageInSign(string title, string qTypeTxt, string qTotalTxt);
 }

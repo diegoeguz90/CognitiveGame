@@ -6,19 +6,6 @@ using UnityEngine;
 
 public abstract class StorageBox : MonoBehaviour
 {
-    public int itemsQuantity = 0;
-    public static event Action<int> OnStorageChanged;
-    public abstract int GetItemsQuantity();
-
-    private void OnTriggerEnter(Collider other)
-    {
-        itemsQuantity++;
-        OnStorageChanged?.Invoke(itemsQuantity);
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        itemsQuantity--;
-        OnStorageChanged?.Invoke(itemsQuantity);
-    }
+    public abstract int GetItemsTypeQuantity();
+    public abstract int GetItemsTotalQuantity();
 }
