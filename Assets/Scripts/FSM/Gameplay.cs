@@ -7,17 +7,19 @@ public class Gameplay : IState
 {
     public void Enter()
     {
+        UIController.Instance.HUD.SetActive(true);
         GameManager.Instance.InitGame();
+        GameManager.Instance.InitTimer();
+
     }
 
-    public void Update(int score)
+    public void Update()
     {
-        if(score == GameManager.Instance.numberOfItems)
-            GameManager.Instance.gameStates.TransitionTo(new Results());
+        GameManager.Instance.gameStates.TransitionTo(new Results());
     }
 
     public void Exit()
     {
-
+        UIController.Instance.HUD.SetActive(false);
     }
 }

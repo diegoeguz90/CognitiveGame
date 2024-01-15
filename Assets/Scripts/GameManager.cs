@@ -13,6 +13,9 @@ public class GameManager : Singleton<GameManager>
     [SerializeField] float minimunDistance = 0.3f;
     private List<Transform> spawnedItems = new();
 
+    [SerializeField] MyTimer gamePlayTimer = new();
+    [SerializeField] float gamePlayDuration;
+
     public GameStates gameStates = new();
 
     /// <summary>
@@ -20,9 +23,10 @@ public class GameManager : Singleton<GameManager>
     /// </summary>
     void Start()
     {
-        gameStates.Initialize(new Gameplay());
+        gameStates.Initialize(new MainMenu());
     }
 
+    #region SpawnItems
     /// <summary>
     /// This function is called at the gameplay state begin
     /// </summary>
@@ -78,4 +82,12 @@ public class GameManager : Singleton<GameManager>
         }
         return false;
     }
+    #endregion
+
+    #region Timer
+    public void InitTimer()
+    {
+        gamePlayTimer.StartTimer(gamePlayDuration);
+    }
+    #endregion
 }

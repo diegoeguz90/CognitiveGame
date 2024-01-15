@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,6 +12,9 @@ public class UIController : Singleton<UIController>
     /// </summary>
     [SerializeField] public GameObject mainMenu;
     [SerializeField] public GameObject resultsMenu;
+    [SerializeField] public GameObject HUD;
+
+    public TMP_Text CountDownTxt;
 
     /// <summary>
     /// 
@@ -19,6 +23,8 @@ public class UIController : Singleton<UIController>
     {
         Button startBtn = mainMenu.GetComponentInChildren<Button>();
         startBtn.onClick.AddListener(OnStartBtnClicked);
+
+        CountDownTxt = HUD.GetComponentsInChildren<TMP_Text>()[2];
 
         Button finishBtn = resultsMenu.GetComponentInChildren<Button>();
         finishBtn.onClick.AddListener(OnFinishBtnClicked);
