@@ -6,7 +6,7 @@ using UnityEngine;
 public class TypeBox : StorageBox
 {
     [SerializeField] Sign signBox;
-    [SerializeField] string typeBox = "Simple";
+    [SerializeField] public string typeBox = "Simple";
 
     public int itemsTypeQuantity = 0;
     public int itemsTotalQuantity = 0;

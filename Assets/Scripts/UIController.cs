@@ -16,6 +16,11 @@ public class UIController : Singleton<UIController>
 
     public TMP_Text CountDownTxt;
 
+    public TMP_Text scoreBox1Txt;
+    public TMP_Text scoreBox2Txt;
+    public TMP_Text scoreBox3Txt;
+    public TMP_Text scoreBox4Txt;
+
     /// <summary>
     /// 
     /// </summary>
@@ -28,6 +33,11 @@ public class UIController : Singleton<UIController>
 
         Button finishBtn = resultsMenu.GetComponentInChildren<Button>();
         finishBtn.onClick.AddListener(OnFinishBtnClicked);
+
+        scoreBox1Txt = resultsMenu.GetComponentsInChildren<TMP_Text>()[1];
+        scoreBox2Txt = resultsMenu.GetComponentsInChildren<TMP_Text>()[2];
+        scoreBox3Txt = resultsMenu.GetComponentsInChildren<TMP_Text>()[3];
+        scoreBox4Txt = resultsMenu.GetComponentsInChildren<TMP_Text>()[4];
     }
 
     /// <summary>

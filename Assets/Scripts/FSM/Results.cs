@@ -8,6 +8,7 @@ public class Results : IState
     public void Enter()
     {
         UIController.Instance.resultsMenu.SetActive(true);
+        GameManager.Instance.CalculateScore();
     }
 
     public void Update()
