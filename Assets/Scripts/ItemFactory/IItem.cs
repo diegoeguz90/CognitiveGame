@@ -5,4 +5,5 @@ using UnityEngine;
 public interface IItem
 {
     public void Initialize();
+    public void RestartPosition();
 }

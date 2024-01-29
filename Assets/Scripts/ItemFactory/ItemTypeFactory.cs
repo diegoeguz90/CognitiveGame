@@ -9,7 +9,8 @@ public class ItemTypeFactory : ItemFactory
     public override IItem InstantiateItem(Vector3 position)
     {
         System.Random random = new System.Random();
-        int index = random.Next(itemType.Count);
+        //int index = random.Next(itemType.Count);
+        int index = random.Next(GameManager.Instance.nBoxes);
 
         GameObject instance = Instantiate(itemType[index].gameObject, position, Quaternion.identity);
 

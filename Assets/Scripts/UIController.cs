@@ -13,6 +13,7 @@ public class UIController : Singleton<UIController>
     [SerializeField] public GameObject mainMenu;
     [SerializeField] public GameObject resultsMenu;
     [SerializeField] public GameObject HUD;
+    [SerializeField] public TMP_Text debugTxt;
 
     public TMP_Text CountDownTxt;
 

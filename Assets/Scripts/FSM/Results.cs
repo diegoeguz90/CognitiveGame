@@ -9,6 +9,7 @@ public class Results : IState
     {
         UIController.Instance.resultsMenu.SetActive(true);
         GameManager.Instance.CalculateScore();
+        CloudSaveController.Instance.SaveDataCloud();
     }
 
     public void Update()

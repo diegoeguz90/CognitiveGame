@@ -16,7 +16,14 @@ public class GameManager : Singleton<GameManager>
 
     [Header("Gameplay parameters")]
     [SerializeField] MyTimer gamePlayTimer;
-    [SerializeField] float gamePlayDuration;
+    [SerializeField] public float gamePlayDuration;
+
+    [Header("Boxes")]
+    [SerializeField] public int nBoxes;
+    [SerializeField] GameObject Box1;
+    [SerializeField] GameObject Box2;
+    [SerializeField] GameObject Box3;
+    [SerializeField] GameObject Box4;
 
     /// <summary>
     /// Variable that manages the game states
@@ -45,7 +52,33 @@ public class GameManager : Singleton<GameManager>
     /// </summary>
     public void InitGame()
     {
+        InstantiateBoxes();
         SpawnItems();
+    }
+
+    private void InstantiateBoxes()
+    {
+        switch (nBoxes)
+        {
+            case 1:
+                Box1.SetActive(true);
+                break;
+            case 2:
+                Box1.SetActive(true);
+                Box2.SetActive(true);
+                break;
+            case 3:
+                Box1.SetActive(true);
+                Box2.SetActive(true);
+                Box3.SetActive(true);
+                break;
+            case 4:
+                Box1.SetActive(true);
+                Box2.SetActive(true);
+                Box3.SetActive(true);
+                Box4.SetActive(true);
+                break;
+        }
     }
 
     /// <summary>
@@ -181,10 +214,10 @@ public class GameManager : Singleton<GameManager>
         score3 = ((float)nBoxItemType3 / (float)nItemType3) * 100.0f;
         score4 = ((float)nBoxItemType4 / (float)nItemType4) * 100.0f;
 
-        UIController.Instance.scoreBox1Txt.text = "Caja 1: " + score1.ToString() + "%";
-        UIController.Instance.scoreBox2Txt.text = "Caja 2: " + score2.ToString() + "%";
-        UIController.Instance.scoreBox3Txt.text = "Caja 3: " + score3.ToString() + "%";
-        UIController.Instance.scoreBox4Txt.text = "Caja 4: " + score4.ToString() + "%";
+        UIController.Instance.scoreBox1Txt.text = "Caja 1: " + score1.ToString("F1") + "%";
+        UIController.Instance.scoreBox2Txt.text = "Caja 2: " + score2.ToString("F1") + "%";
+        UIController.Instance.scoreBox3Txt.text = "Caja 3: " + score3.ToString("F1") + "%";
+        UIController.Instance.scoreBox4Txt.text = "Caja 4: " + score4.ToString("F1") + "%";
     }
     #endregion
 }

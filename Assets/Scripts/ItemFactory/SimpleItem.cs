@@ -9,4 +9,9 @@ public class SimpleItem : MonoBehaviour, IItem
         // unique logic to this item
         
     }
+
+    public void RestartPosition() 
+    {
+        
+    }
 }
