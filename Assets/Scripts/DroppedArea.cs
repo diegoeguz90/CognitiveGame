@@ -7,6 +7,6 @@ public class DroppedArea : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         ItemType itemType = other.GetComponent<ItemType>();
-        itemType.RestartPosition();
+        itemType?.RestartPosition();
     }
 }

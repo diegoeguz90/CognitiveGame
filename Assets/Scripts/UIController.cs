@@ -13,14 +13,11 @@ public class UIController : Singleton<UIController>
     [SerializeField] public GameObject mainMenu;
     [SerializeField] public GameObject resultsMenu;
     [SerializeField] public GameObject HUD;
+
+    [SerializeField] public TMP_Text CountDownTxt;
     [SerializeField] public TMP_Text debugTxt;
 
-    public TMP_Text CountDownTxt;
-
-    public TMP_Text scoreBox1Txt;
-    public TMP_Text scoreBox2Txt;
-    public TMP_Text scoreBox3Txt;
-    public TMP_Text scoreBox4Txt;
+    [SerializeField] public List<TMP_Text> scoreBoxesTxt;
 
     /// <summary>
     /// 
@@ -35,10 +32,10 @@ public class UIController : Singleton<UIController>
         Button finishBtn = resultsMenu.GetComponentInChildren<Button>();
         finishBtn.onClick.AddListener(OnFinishBtnClicked);
 
-        scoreBox1Txt = resultsMenu.GetComponentsInChildren<TMP_Text>()[1];
-        scoreBox2Txt = resultsMenu.GetComponentsInChildren<TMP_Text>()[2];
-        scoreBox3Txt = resultsMenu.GetComponentsInChildren<TMP_Text>()[3];
-        scoreBox4Txt = resultsMenu.GetComponentsInChildren<TMP_Text>()[4];
+        scoreBoxesTxt[0] = resultsMenu.GetComponentsInChildren<TMP_Text>()[1];
+        scoreBoxesTxt[1] = resultsMenu.GetComponentsInChildren<TMP_Text>()[2];
+        scoreBoxesTxt[2] = resultsMenu.GetComponentsInChildren<TMP_Text>()[3];
+        scoreBoxesTxt[3] = resultsMenu.GetComponentsInChildren<TMP_Text>()[4];
     }
 
     /// <summary>

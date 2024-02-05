@@ -10,7 +10,6 @@ public class Gameplay : IState
         UIController.Instance.HUD.SetActive(true);
         GameManager.Instance.InitGame();
         GameManager.Instance.InitTimer();
-
     }
 
     public void Update()

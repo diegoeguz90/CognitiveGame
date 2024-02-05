@@ -17,7 +17,10 @@ public class CloudSaveController : Singleton<CloudSaveController>
         public int limitT;
         public int nBoxes;
         public int nItems;
-
+        public float score1;
+        public float score2;
+        public float score3;
+        public float score4;
     }
     async void Start()
     {
@@ -73,8 +76,18 @@ public class CloudSaveController : Singleton<CloudSaveController>
         performance.limitT = (int)GameManager.Instance.gamePlayDuration;
         performance.nBoxes = GameManager.Instance.nBoxes;
         performance.nItems = GameManager.Instance.numberOfItems;
+        performance.score1 = GameManager.Instance.score1;
+        performance.score2 = GameManager.Instance.score2;
+        performance.score3 = GameManager.Instance.score3;
+        performance.score4 = GameManager.Instance.score4;
 
-        var data = new Dictionary<string, object> { { "performance", performance } };
+        // Obtener la fecha y hora actual
+        DateTime now = DateTime.Now;
+        // Construir el string con el formato deseado
+        string key = "Date-" + now.ToString("yyyy-MM-dd") + "-Time-" + now.ToString("HH-mm-ss");
+
+        var data = new Dictionary<string, object> { { key, performance } };
         await CloudSaveService.Instance.Data.Player.SaveAsync(data);
+        UIController.Instance.debugTxt.text = "Cloud save success: " + key;
     }
 }

@@ -6,24 +6,24 @@ using UnityEngine;
 
 public class GameManager : Singleton<GameManager>
 {
+    [Header("Game Settings")]
+    [SerializeField] public int numberOfItems = 4;
+    [SerializeField] public int nBoxes = 4;
+    [SerializeField] public float gamePlayDuration = 30;
+    
     [Header("Factory parameters")]
     [SerializeField] ItemTypeFactory ItemFactory;
-    [SerializeField] public int numberOfItems;
-    [SerializeField] Vector3 spawnAreaCenter = new();
-    [SerializeField] Vector3 spawnAreaSize = new();
-    [SerializeField] float minimunDistance = 0.3f;
+    [SerializeField] GameObject spawnArea;
+    private float minimunDistance = 0.3f;
     private List<Transform> spawnedItems = new();
+    private Vector3 spawnAreaCenter = new();
+    private Vector3 spawnAreaSize = new();
 
     [Header("Gameplay parameters")]
     [SerializeField] MyTimer gamePlayTimer;
-    [SerializeField] public float gamePlayDuration;
 
     [Header("Boxes")]
-    [SerializeField] public int nBoxes;
-    [SerializeField] GameObject Box1;
-    [SerializeField] GameObject Box2;
-    [SerializeField] GameObject Box3;
-    [SerializeField] GameObject Box4;
+    [SerializeField] List<GameObject> Boxes;
 
     /// <summary>
     /// Variable that manages the game states
@@ -43,44 +43,60 @@ public class GameManager : Singleton<GameManager>
     /// </summary>
     void Start()
     {
+        spawnAreaCenter = spawnArea.transform.position;
+        spawnAreaSize = spawnArea.transform.localScale;
+
         gameStates.Initialize(new MainMenu());
     }
 
-    #region GameplayMethods
     /// <summary>
     /// This function is called at the gameplay state begin
     /// </summary>
     public void InitGame()
     {
-        InstantiateBoxes();
+        RandomizeSettings();
+        ActivateBoxes();
         SpawnItems();
     }
 
-    private void InstantiateBoxes()
+    void RandomizeSettings()
+    {
+        System.Random random = new();
+
+        numberOfItems = random.Next(8,30+1);
+        nBoxes = random.Next(2,4+1);
+        gamePlayDuration = (float)(random.NextDouble()*((60-30)+30));
+    }
+
+    /// <summary>
+    /// Activate the quantity of boxes  
+    /// </summary>
+    private void ActivateBoxes()
     {
         switch (nBoxes)
         {
             case 1:
-                Box1.SetActive(true);
+                Boxes[0].SetActive(true);
                 break;
             case 2:
-                Box1.SetActive(true);
-                Box2.SetActive(true);
+                Boxes[0].SetActive(true);
+                Boxes[1].SetActive(true);
                 break;
             case 3:
-                Box1.SetActive(true);
-                Box2.SetActive(true);
-                Box3.SetActive(true);
+                Boxes[0].SetActive(true);
+                Boxes[1].SetActive(true);
+                Boxes[2].SetActive(true);
                 break;
             case 4:
-                Box1.SetActive(true);
-                Box2.SetActive(true);
-                Box3.SetActive(true);
-                Box4.SetActive(true);
+                Boxes[0].SetActive(true);
+                Boxes[1].SetActive(true);
+                Boxes[2].SetActive(true);
+                Boxes[3].SetActive(true);
                 break;
         }
     }
 
+    #region SpaiwnItems
     /// <summary>
     /// Create a item in a random position, using the factory
     /// </summary>
@@ -94,7 +110,6 @@ public class GameManager : Singleton<GameManager>
             {
                 randomPoint = GetRandomPointInArea();
             }
-
             IItem item = ItemFactory.InstantiateItem(randomPoint);
         }
     }
@@ -128,6 +143,8 @@ public class GameManager : Singleton<GameManager>
         }
         return false;
     }
+    #endregion
+
 
     /// <summary>
     /// Init the gameplay timer, defines the duration of the game
@@ -136,7 +153,6 @@ public class GameManager : Singleton<GameManager>
     {
         gamePlayTimer.StartTimer(gamePlayDuration);
     }
-    #endregion
 
     #region ResultsMethods
     public void CalculateScore()
@@ -144,16 +160,10 @@ public class GameManager : Singleton<GameManager>
         ItemType[] itemsType;
         TypeBox[] boxsType;
 
-        int nItemType1, nItemType2, nItemType3, nItemType4;
-        int nBoxItemType1, nBoxItemType2, nBoxItemType3, nBoxItemType4;
+        int nItemType1 = 0, nItemType2 = 0, nItemType3 = 0, nItemType4 = 0, nBoxItemType1 = 0, 
+            nBoxItemType2 = 0, nBoxItemType3 = 0, nBoxItemType4 = 0;
         
         itemsType = FindObjectsOfType<ItemType>();
-
-        nItemType1 = 0;
-        nItemType2 = 0;
-        nItemType3 = 0;
-        nItemType4 = 0;
-
         foreach (ItemType item in itemsType)
         {
             if (item.type == "Type1")
@@ -179,12 +189,6 @@ public class GameManager : Singleton<GameManager>
         }
 
         boxsType = FindObjectsOfType<TypeBox>();
-
-        nBoxItemType1 = 0;
-        nBoxItemType2 = 0;
-        nBoxItemType3 = 0;
-        nBoxItemType4 = 0;
-
         foreach (TypeBox box in boxsType)
         {
             if (box.typeBox == "Type1")
@@ -209,15 +213,27 @@ public class GameManager : Singleton<GameManager>
             }
         }
 
-        score1 = ((float)nBoxItemType1 / (float)nItemType1) * 100.0f;
-        score2 = ((float)nBoxItemType2 / (float)nItemType2) * 100.0f;
-        score3 = ((float)nBoxItemType3 / (float)nItemType3) * 100.0f;
-        score4 = ((float)nBoxItemType4 / (float)nItemType4) * 100.0f;
+        score1 = ComputeScore(nBoxItemType1, nItemType1);
+        score2 = ComputeScore(nBoxItemType2, nItemType2);
+        score3 = ComputeScore(nBoxItemType3, nItemType3);
+        score4 = ComputeScore(nBoxItemType4, nItemType4);
 
-        UIController.Instance.scoreBox1Txt.text = "Caja 1: " + score1.ToString("F1") + "%";
-        UIController.Instance.scoreBox2Txt.text = "Caja 2: " + score2.ToString("F1") + "%";
-        UIController.Instance.scoreBox3Txt.text = "Caja 3: " + score3.ToString("F1") + "%";
-        UIController.Instance.scoreBox4Txt.text = "Caja 4: " + score4.ToString("F1") + "%";
+        UIController.Instance.scoreBoxesTxt[0].text = "Caja 1: " + score1.ToString("F1") + "%";
+        UIController.Instance.scoreBoxesTxt[1].text = "Caja 2: " + score2.ToString("F1") + "%";
+        UIController.Instance.scoreBoxesTxt[2].text = "Caja 3: " + score3.ToString("F1") + "%";
+        UIController.Instance.scoreBoxesTxt[3].text = "Caja 4: " + score4.ToString("F1") + "%";
+    }
+
+    private float ComputeScore(int nBoxItemType, int nItemType)
+    {
+        if (nItemType == 0)
+        {
+            return 999.0f;
+        }
+        else
+        {
+            return ((float)nBoxItemType / (float)nItemType) * 100.0f;
+        }
     }
     #endregion
 }
