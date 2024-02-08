@@ -8,6 +8,7 @@ public class Results : IState
     public void Enter()
     {
         UIController.Instance.resultsMenu.SetActive(true);
+        UIController.Instance.endGameMenu.SetActive(true);
         GameManager.Instance.CalculateScore();
         CloudSaveController.Instance.SaveDataCloud();
     }
@@ -15,7 +16,8 @@ public class Results : IState
     public void Update()
     {
         UIController.Instance.resultsMenu.SetActive(false);
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        UIController.Instance.endGameMenu.SetActive(false);
+        SceneManager.LoadScene(0);
     }
 
     public void Exit()

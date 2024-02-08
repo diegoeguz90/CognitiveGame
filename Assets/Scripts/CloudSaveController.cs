@@ -9,6 +9,7 @@ using Unity.Services.CloudSave;
 using System.Threading.Tasks;
 using UnityEngine.Events;
 using UnityEngine.Analytics;
+using UnityEngine.SceneManagement;
 
 public class CloudSaveController : Singleton<CloudSaveController>
 {
@@ -71,6 +72,8 @@ public class CloudSaveController : Singleton<CloudSaveController>
 
     public async void SaveDataCloud()
     {
+        int sceneIndex = SceneManager.GetActiveScene().buildIndex;
+
         dataToSave performance = new();
 
         performance.limitT = (int)GameManager.Instance.gamePlayDuration;
@@ -84,7 +87,7 @@ public class CloudSaveController : Singleton<CloudSaveController>
         // Obtener la fecha y hora actual
         DateTime now = DateTime.Now;
         // Construir el string con el formato deseado
-        string key = "Date-" + now.ToString("yyyy-MM-dd") + "-Time-" + now.ToString("HH-mm-ss");
+        string key = "Date-" + now.ToString("yyyy-MM-dd") + "-Time-" + now.ToString("HH-mm-ss") + "-Scene" + sceneIndex;
 
         var data = new Dictionary<string, object> { { key, performance } };
         await CloudSaveService.Instance.Data.Player.SaveAsync(data);

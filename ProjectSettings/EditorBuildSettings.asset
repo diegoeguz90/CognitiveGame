@@ -8,6 +8,15 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/CognitiveGame.unity
     guid: f3cac6c8e66f8ee438bf1a55588438b4
+  - enabled: 1
+    path: Assets/Scenes/LvlEasy.unity
+    guid: f9974588fbf38f449a7b4e3146992b7c
+  - enabled: 1
+    path: Assets/Scenes/LvlMid.unity
+    guid: e401e626e3ff7784db3f5b44110c3905
+  - enabled: 1
+    path: Assets/Scenes/LvlHard.unity
+    guid: 9aa9b5905952bc946b5ed073307cf759
   m_configObjects:
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: fb33e40c1c6751b489429e7e5869ad06,
       type: 2}

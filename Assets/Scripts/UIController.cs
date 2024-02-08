@@ -13,6 +13,7 @@ public class UIController : Singleton<UIController>
     [SerializeField] public GameObject mainMenu;
     [SerializeField] public GameObject resultsMenu;
     [SerializeField] public GameObject HUD;
+    [SerializeField] public GameObject endGameMenu;
 
     [SerializeField] public TMP_Text CountDownTxt;
     [SerializeField] public TMP_Text debugTxt;
@@ -29,7 +30,7 @@ public class UIController : Singleton<UIController>
 
         CountDownTxt = HUD.GetComponentsInChildren<TMP_Text>()[2];
 
-        Button finishBtn = resultsMenu.GetComponentInChildren<Button>();
+        Button finishBtn = endGameMenu.GetComponentInChildren<Button>();
         finishBtn.onClick.AddListener(OnFinishBtnClicked);
 
         scoreBoxesTxt[0] = resultsMenu.GetComponentsInChildren<TMP_Text>()[1];
