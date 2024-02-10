@@ -334,7 +334,7 @@ GameObject:
   - component: {fileID: 8654244711691414603}
   - component: {fileID: 2560389138940383784}
   m_Layer: 0
-  m_Name: Shape2Big
+  m_Name: BigShape2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

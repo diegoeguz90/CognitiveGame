@@ -1,0 +1,32 @@
+# Blender 4.0.2 MTL File: 'tarroaceite.blend'
+# www.blender.org
+
+newmtl Material.001
+Ns 318.344452
+Ka 0.394495 0.394495 0.394495
+Kd 0.082297 0.084373 0.111924
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 3
+
+newmtl Material.002
+Ns 0.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.017572 0.018188 0.304989
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+
+newmtl fondoAceite
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+illum 2
+map_Kd C:/Users/stive/Downloads/fondoaceite3.PNG
+map_d C:/Users/stive/Downloads/fondoaceite3.PNG

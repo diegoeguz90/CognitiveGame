@@ -63,7 +63,7 @@ public class GameManager : Singleton<GameManager>
     {
         System.Random random = new();
 
-        numberOfItems = random.Next(4,12+1);
+        numberOfItems = random.Next(4,8+1);
         nBoxes = random.Next(2,4+1);
         gamePlayDuration = (float)random.Next(15, 30 + 1); ;
     }
