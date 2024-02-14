@@ -15,6 +15,8 @@ public class CloudSaveController : Singleton<CloudSaveController>
 {
     struct dataToSave
     {
+        public string name;
+        public int scene;
         public int limitT;
         public int nBoxes;
         public int nItems;
@@ -76,6 +78,9 @@ public class CloudSaveController : Singleton<CloudSaveController>
 
         dataToSave performance = new();
 
+        performance.name = PlayerPrefs.GetString("name");
+        performance.scene = sceneIndex;
+
         performance.limitT = (int)GameManager.Instance.gamePlayDuration;
         performance.nBoxes = GameManager.Instance.nBoxes;
         performance.nItems = GameManager.Instance.numberOfItems;
@@ -87,7 +92,7 @@ public class CloudSaveController : Singleton<CloudSaveController>
         // Obtener la fecha y hora actual
         DateTime now = DateTime.Now;
         // Construir el string con el formato deseado
-        string key = "Date-" + now.ToString("yyyy-MM-dd") + "-Time-" + now.ToString("HH-mm-ss") + "-Scene" + sceneIndex;
+        string key = "Date-" + now.ToString("yyyy-MM-dd") + "-Time-" + now.ToString("HH-mm-ss");
 
         var data = new Dictionary<string, object> { { key, performance } };
         await CloudSaveService.Instance.Data.Player.SaveAsync(data);

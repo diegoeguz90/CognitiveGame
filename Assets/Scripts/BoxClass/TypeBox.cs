@@ -13,24 +13,32 @@ public class TypeBox : StorageBox
 
     private void OnTriggerEnter(Collider other)
     {
-        string type = other.GetComponent<ItemType>().type;
-        if (typeBox == type)
+        ItemType type = other.GetComponent<ItemType>();
+
+        if (type != null)
         {
-            itemsTypeQuantity++;
+            if (typeBox == type.type)
+            {
+                itemsTypeQuantity++;
+            }
+            itemsTotalQuantity++;
+            signBox.SetMessageInSign(itemsTypeQuantity.ToString(), itemsTotalQuantity.ToString());
         }
-        itemsTotalQuantity++;
-        signBox.SetMessageInSign("¡Caja!", itemsTypeQuantity.ToString(), itemsTotalQuantity.ToString());
     }
 
     private void OnTriggerExit(Collider other)
     {
-        string type = other.GetComponent<ItemType>().type;
-        if (typeBox == type)
+        ItemType type = other.GetComponent<ItemType>();
+
+        if (type != null)
         {
-            itemsTypeQuantity--;
+            if (typeBox == type.type)
+            {
+                itemsTypeQuantity--;
+            }
+            itemsTotalQuantity--;
+            signBox.SetMessageInSign(itemsTypeQuantity.ToString(), itemsTotalQuantity.ToString());
         }
-        itemsTotalQuantity--;
-        signBox.SetMessageInSign("¡Caja!", itemsTypeQuantity.ToString(), itemsTotalQuantity.ToString());
     }
 
     public override int GetItemsTypeQuantity()

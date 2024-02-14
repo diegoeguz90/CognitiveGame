@@ -10,9 +10,8 @@ public class SignBox : Sign
     [SerializeField] TMP_Text typeQuantityTxt;
     [SerializeField] TMP_Text totalQuantityTxt;
 
-    public override void SetMessageInSign(string title, string qTypeTxt, string qTotalTxt)
+    public override void SetMessageInSign(string qTypeTxt, string qTotalTxt)
     {
-        titleTxt.text = title;
         typeQuantityTxt.text = "Cantidad items por tipo: " + qTypeTxt;
         totalQuantityTxt.text = "Cantidad items total: " + qTotalTxt;
     }

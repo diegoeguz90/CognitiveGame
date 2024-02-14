@@ -1043,7 +1043,7 @@ PrefabInstance:
     - target: {fileID: 2723400026875844610, guid: 0250c8e8165b7c7448c8462b3f3a5900,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3302075182148157756, guid: 0250c8e8165b7c7448c8462b3f3a5900,
         type: 3}
@@ -1635,7 +1635,7 @@ Transform:
   m_GameObject: {fileID: 486836835}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.61613256, y: -0.153, z: -0.81490004}
+  m_LocalPosition: {x: 0.61613256, y: -0.185, z: -0.81490004}
   m_LocalScale: {x: 6.400239, y: 0.1, z: 7.435588}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2316,7 +2316,7 @@ PrefabInstance:
     - target: {fileID: 2723400026875844610, guid: 0250c8e8165b7c7448c8462b3f3a5900,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8071282175753919085, guid: 0250c8e8165b7c7448c8462b3f3a5900,
         type: 3}
@@ -2404,7 +2404,12 @@ PrefabInstance:
     - target: {fileID: 1401686288489812106, guid: 0250c8e8165b7c7448c8462b3f3a5900,
         type: 3}
       propertyPath: m_text
-      value: Cepillos
+      value: Tijeras
+      objectReference: {fileID: 0}
+    - target: {fileID: 1401686288489812106, guid: 0250c8e8165b7c7448c8462b3f3a5900,
+        type: 3}
+      propertyPath: m_fontSize
+      value: 242.65
       objectReference: {fileID: 0}
     - target: {fileID: 2101328239792032433, guid: 0250c8e8165b7c7448c8462b3f3a5900,
         type: 3}
@@ -2424,7 +2429,7 @@ PrefabInstance:
     - target: {fileID: 2723400026875844610, guid: 0250c8e8165b7c7448c8462b3f3a5900,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3302075182148157756, guid: 0250c8e8165b7c7448c8462b3f3a5900,
         type: 3}
@@ -2727,8 +2732,8 @@ Transform:
   m_GameObject: {fileID: 868452673}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.3715, y: 1.294, z: 0.223}
-  m_LocalScale: {x: 0.5741706, y: 0, z: 0.30516285}
+  m_LocalPosition: {x: 0.3641, y: 1.268, z: 0.195}
+  m_LocalScale: {x: 0.5058521, y: 0, z: 0.24915898}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -4028,10 +4033,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemType:
-  - {fileID: 4964633667787281297, guid: 64a99d2682dc8e64a96164ed9120d924, type: 3}
-  - {fileID: 1784951994765137041, guid: 3c54e0deabf027f45b6a70440157fd59, type: 3}
-  - {fileID: 2441479565948561355, guid: 225a1aec71aa69643b478100b53499a5, type: 3}
-  - {fileID: 9200991319385345150, guid: 7bd16af1267772343989cf140ce78553, type: 3}
+  - {fileID: 1830807573061999681, guid: 25dc32c9e9837564bbc242e89c43ac77, type: 3}
+  - {fileID: 1681999432687050474, guid: 8bce39c2315bac54fbfebe235ddff7b4, type: 3}
+  - {fileID: 2912759857293312717, guid: 606266e9c25731f40963628e1273eadd, type: 3}
+  - {fileID: 8220897613812580944, guid: 3761f75059571d443be92bac15305aab, type: 3}
 --- !u!1 &1410229449
 GameObject:
   m_ObjectHideFlags: 0
@@ -4318,7 +4323,7 @@ PrefabInstance:
     - target: {fileID: 2723400026875844610, guid: 0250c8e8165b7c7448c8462b3f3a5900,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3302075182148157756, guid: 0250c8e8165b7c7448c8462b3f3a5900,
         type: 3}
@@ -4985,7 +4990,7 @@ Transform:
   m_GameObject: {fileID: 1644095548}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.4, y: 0.1, z: -0.113}
+  m_LocalPosition: {x: 0.4, y: 0.2, z: -0.113}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

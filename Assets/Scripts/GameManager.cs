@@ -14,7 +14,7 @@ public class GameManager : Singleton<GameManager>
     [Header("Factory parameters")]
     [SerializeField] ItemTypeFactory ItemFactory;
     [SerializeField] GameObject spawnArea;
-    private float minimunDistance = 0.3f;
+    private float minimunDistance = 0.35f;
     private List<Transform> spawnedItems = new();
     private Vector3 spawnAreaCenter = new();
     private Vector3 spawnAreaSize = new();
@@ -55,7 +55,6 @@ public class GameManager : Singleton<GameManager>
     public void InitGame()
     {
         RandomizeSettings();
-        ActivateBoxes();
         SpawnItems();
     }
 
@@ -63,37 +62,9 @@ public class GameManager : Singleton<GameManager>
     {
         System.Random random = new();
 
+        nBoxes = random.Next(2, 4 + 1);
         numberOfItems = random.Next(4,8+1);
-        nBoxes = random.Next(2,4+1);
         gamePlayDuration = (float)random.Next(15, 30 + 1); ;
-    }
-
-    /// <summary>
-    /// Activate the quantity of boxes  
-    /// </summary>
-    private void ActivateBoxes()
-    {
-        switch (nBoxes)
-        {
-            case 1:
-                Boxes[0].SetActive(true);
-                break;
-            case 2:
-                Boxes[0].SetActive(true);
-                Boxes[1].SetActive(true);
-                break;
-            case 3:
-                Boxes[0].SetActive(true);
-                Boxes[1].SetActive(true);
-                Boxes[2].SetActive(true);
-                break;
-            case 4:
-                Boxes[0].SetActive(true);
-                Boxes[1].SetActive(true);
-                Boxes[2].SetActive(true);
-                Boxes[3].SetActive(true);
-                break;
-        }
     }
 
     #region SpaiwnItems
